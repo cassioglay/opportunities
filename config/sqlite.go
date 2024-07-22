@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/cassioglay/opportunities/shemas"
+	"github.com/cassioglay/opportunities/schemas"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -38,7 +38,7 @@ func InitializeSQLite() (*gorm.DB, error) {
 	}
 
 	//Migrations shema
-	err = db.AutoMigrate(&shemas.Opening{})
+	err = db.AutoMigrate(&schemas.Opening{})
 	if err != nil {
 		logger.Errorf("sqlite automigration error: %v", err)
 		return nil, err
