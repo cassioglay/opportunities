@@ -1,9 +1,11 @@
-FROM golang:1.16
+FROM golang:1.20
 
 WORKDIR /go/src
 ENV PATH="~/go/bin:${PATH}"
 
 RUN apt-get update && apt-get install sqlite3 -y
+
+RUN go install github.com/swaggo/swag/cmd/swag@latest
 
 RUN usermod -u 1000 www-data
 RUN mkdir -p /var/www/.cache
